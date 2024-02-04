@@ -15,7 +15,9 @@ module Types
   , Side(..)
   , Update(..)
 
+  , gameEnded
   , newBoard
+  , nextTurn
   ) where
 
 import Data.Array (Array, listArray)
@@ -105,3 +107,8 @@ newBoard = listArray ((0,0), (2,2)) $ replicate 9 Nothing
 -- | Проверка текущего состояние игры на завершение.
 gameEnded :: GameState -> Bool
 gameEnded GameState{gameProgress} = gameProgress /= InProgress
+
+-- | Возвращает следующих ход.
+nextTurn :: Side -> Side
+nextTurn Cross = Zero
+nextTurn Zero = Cross
