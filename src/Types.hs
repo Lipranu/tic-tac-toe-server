@@ -91,6 +91,7 @@ data GameError
   deriving stock Show
 
 instance GameText GameError where
+  toGameText :: GameError -> Text
   toGameText CellOccupied = "Так уже походили"
   toGameText (OutOfBorder point) = "Ход по координатам " <> showt point <> ", находиться за пределами поля"
   toGameText (ParseError _) = "Не получилось распарсить Update, начинаем новую игру."
@@ -100,3 +101,7 @@ instance GameText GameError where
 -- | Создаёт новое игровое поле.
 newBoard :: Board
 newBoard = listArray ((0,0), (2,2)) $ replicate 9 Nothing
+
+-- | Проверка текущего состояние игры на завершение.
+gameEnded :: GameState -> Bool
+gameEnded GameState{gameProgress} = gameProgress /= InProgress

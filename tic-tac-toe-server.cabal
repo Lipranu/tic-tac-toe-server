@@ -15,6 +15,8 @@ common tic-tac-toe-common
   build-depends:       base ^>=4.17.0.0
   default-extensions:
       InstanceSigs
+    , FlexibleContexts
+    , NamedFieldPuns
 
 library
   import:              tic-tac-toe-common
@@ -27,6 +29,7 @@ library
   build-depends:
     , array
     , http-api-data
+    , mtl
     , text
     , time
     , uuid
