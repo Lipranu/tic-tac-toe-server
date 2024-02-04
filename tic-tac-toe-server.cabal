@@ -13,20 +13,28 @@ extra-source-files:  README.md
 common tic-tac-toe-common
   default-language:    Haskell2010
   build-depends:       base ^>=4.17.0.0
+  default-extensions:
+      InstanceSigs
 
 library
   import:              tic-tac-toe-common
-  exposed-modules:     Server
-  -- other-modules:
-  -- other-extensions:
-  -- build-depends:       base ^>=4.13.0.0
+  exposed-modules:
+      Server
+    , Game
+    , Types
+  other-modules:
+      Data.Text.Extended
+  build-depends:
+    , array
+    , http-api-data
+    , text
+    , time
+    , uuid
   hs-source-dirs:      src
 
 executable tic-tac-toe-server
   import:              tic-tac-toe-common
   main-is:             Main.hs
-  -- other-modules:
-  -- other-extensions:
   build-depends:       tic-tac-toe-server
   hs-source-dirs:      app
 
