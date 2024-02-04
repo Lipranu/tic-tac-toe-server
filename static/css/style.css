@@ -1,0 +1,99 @@
+html, body {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+form {
+  margin-block-end: 0px;
+  width: 102px;
+  height: 102px;
+}
+
+input {
+  padding: 0px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color:#00A0C6;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+p {
+  user-select: none;
+  cursor: unset;
+}
+
+.title {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.bar {
+  padding: 20px;
+  text-align: center;
+}
+
+.newgame {
+  border: 1px solid black;
+  padding: 20px 60px;
+  text-transform: uppercase;
+  background: #d6d6d6;
+  font-size: 20px;
+  cursor: pointer;
+}
+.error {
+  color: black;
+  border-top: 5px solid red;
+  padding: 20px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 320px;
+    height: 320px;
+    margin: 30px auto;
+}
+
+.cell {
+  font-family: sans-serif;
+  font-weight: bold;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  line-height: 100px;
+  font-size: 96px;
+  color: white;
+  margin: 1px;
+  background: white;
+  text-align: center;
+}
+
+.cell:disabled {
+  user-select: none;
+  cursor: unset;
+}
+
+.cell:hover:enabled {
+  color: #909090;
+  cursor: pointer;
+}
+
+.cell.win {
+  background: #baffb3;
+}
+
+.cross {
+  color: #e83333;
+}
+
+.zero {
+  color: #4281ff;
+}
