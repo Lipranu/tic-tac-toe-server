@@ -22,8 +22,9 @@ common tic-tac-toe-common
 library
   import:              tic-tac-toe-common
   exposed-modules:
-      Server
-    , Game
+      Game
+    , Server
+    , SessionManager
     , Types
     , View
   other-modules:
@@ -48,7 +49,12 @@ library
 executable tic-tac-toe-server
   import:              tic-tac-toe-common
   main-is:             Main.hs
-  build-depends:       tic-tac-toe-server
+  build-depends:
+    , async
+    , stm
+    , tic-tac-toe-server
+    , unordered-containers
+    , warp
   hs-source-dirs:      app
 
 test-suite tic-tac-toe-server-test
