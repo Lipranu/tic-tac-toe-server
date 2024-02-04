@@ -39,7 +39,6 @@ renderHead :: Html ()
 renderHead = head_ $ do
   title_ "Tic-Tac_Toe"
   link_ [rel_ "stylesheet", type_ "text/css", href_ "css/style.css"]
-  link_ [rel_ "stylesheet", type_ "text/css", href_ "css/normalize.css"]
   meta_ [content_ "text/html; charset=UTF-8", httpEquiv_ "Content-Type"]
 
 -- | Заголовок игры.

@@ -100,11 +100,11 @@ data GameError
 
 instance GameText GameError where
   toGameText :: GameError -> Text
-  toGameText CellOccupied = "Так уже походили"
+  toGameText CellOccupied = "Клетка уже занята."
   toGameText (OutOfBorder point) = "Ход по координатам " <> showt point <> ", находиться за пределами поля"
-  toGameText (ParseError _) = "Не получилось распарсить Update, начинаем новую игру."
+  toGameText (ParseError _) = "Не получилось прочитать форму запроса. Начата новая игра."
   toGameText TurnsDesync = "Рассинхронизация ходов с сервером. Отправлено актуальное состояние игры."
-  toGameText GameNotFound = "Ваша игра не найдена или была удалена. Начните новую игру!"
+  toGameText GameNotFound = "Ваша игра не найдена или была удалена. Начата новая игра."
 
 -- | Создаёт новое игровое поле.
 newBoard :: Board

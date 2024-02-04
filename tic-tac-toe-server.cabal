@@ -49,6 +49,10 @@ library
 executable tic-tac-toe-server
   import:              tic-tac-toe-common
   main-is:             Main.hs
+  ghc-options:
+    -threaded
+    -Wall
+    -Werror
   build-depends:
     , async
     , stm
