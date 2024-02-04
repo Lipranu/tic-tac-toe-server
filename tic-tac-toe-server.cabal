@@ -26,14 +26,18 @@ library
     , Types
     , View
   other-modules:
-      Data.Text.Extended
+      Control.Monad.Logger.Extended
+    , Data.Text.Extended
   build-depends:
     , array
     , http-api-data
     , lucid
+    , monad-logger
     , mtl
+    , stm
     , text
     , time
+    , unordered-containers
     , uuid
   hs-source-dirs:      src
 

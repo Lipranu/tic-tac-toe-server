@@ -7,6 +7,7 @@
 module Types
   ( Board
   , Point
+  , Sessions
 
   , GameError(..)
   , GameProgress(..)
@@ -21,6 +22,7 @@ module Types
   ) where
 
 import Data.Array (Array, listArray)
+import Data.HashMap.Strict (HashMap)
 import Data.Text.Extended (Text, showt)
 import Data.Time (UTCTime)
 import Data.UUID (UUID)
@@ -34,6 +36,9 @@ type Point = (Int, Int)
 
 -- | Игровое поле.
 type Board = Array Point (Maybe Side)
+
+-- | Коллекция активныхигровых сессий.
+type Sessions = HashMap UUID GameState
 
 -- | Класс преобразует данные в текст для вывода игроку.
 class GameText a where
