@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards   #-}
 
 -- | Модуль отрисовки игры в HTML.
 module View (renderView, renderViewWithError) where

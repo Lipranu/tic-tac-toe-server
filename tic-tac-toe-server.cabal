@@ -14,9 +14,10 @@ common tic-tac-toe-common
   default-language:    Haskell2010
   build-depends:       base ^>=4.17.0.0
   default-extensions:
-      InstanceSigs
-    , FlexibleContexts
+      FlexibleContexts
+    , InstanceSigs
     , NamedFieldPuns
+    , RecordWildCards
 
 library
   import:              tic-tac-toe-common
@@ -34,6 +35,9 @@ library
     , lucid
     , monad-logger
     , mtl
+    , random
+    , servant-lucid
+    , servant-server
     , stm
     , text
     , time

@@ -1,5 +1,3 @@
-{-# LANGUAGE RecordWildCards #-}
-
 -- | Модуль игрового процесса.
 module Game (run) where
 

@@ -1,6 +1,6 @@
-{-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE DeriveAnyClass     #-}
 {-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE OverloadedStrings  #-}
 
 -- | Модуль содержит типы, используемые другими модулями приложения.
@@ -18,6 +18,7 @@ module Types
 
   , gameEnded
   , newBoard
+  , newGameState
   , nextTurn
   ) where
 
@@ -117,3 +118,13 @@ gameEnded GameState{gameProgress} = gameProgress /= InProgress
 nextTurn :: Side -> Side
 nextTurn Cross = Zero
 nextTurn Zero = Cross
+
+-- | Создание нового игрового состояния.
+newGameState :: UTCTime -> GameState
+newGameState lastUpdate = GameState
+  { gameProgress = InProgress
+  , board = newBoard
+  , turnCount = 0
+  , turnCurrent = Cross
+  , lastUpdate
+  }
