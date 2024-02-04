@@ -6,12 +6,12 @@
 -- | Модуль содержит типы, используемые другими модулями приложения.
 module Types
   ( Board
-  , GameText
   , Point
 
   , GameError(..)
   , GameProgress(..)
   , GameState(..)
+  , GameText(..)
   , Side(..)
   , Update(..)
 

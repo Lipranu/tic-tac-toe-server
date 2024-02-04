@@ -24,11 +24,13 @@ library
       Server
     , Game
     , Types
+    , View
   other-modules:
       Data.Text.Extended
   build-depends:
     , array
     , http-api-data
+    , lucid
     , mtl
     , text
     , time
