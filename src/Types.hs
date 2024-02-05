@@ -94,15 +94,15 @@ data GameError
   = CellOccupied       -- ^ Попытка походить в клетку, в которой уже был сделан ход.
   | GameNotFound       -- ^ Игра не найдена в кэше сессий.
   | TurnsDesync        -- ^ Рассинхронизация количества ходов на сервере.
+  | ParseError         -- ^ Ошибка парсинга хода игрока.
   | OutOfBorder !Point -- ^ Координаты хода за пределами игрового поля.
-  | ParseError !String -- ^ Ошибка парсинга хода игрока.
   deriving stock (Show, Eq)
 
 instance GameText GameError where
   toGameText :: GameError -> Text
   toGameText CellOccupied = "Клетка уже занята."
   toGameText (OutOfBorder point) = "Ход по координатам " <> showt point <> ", находиться за пределами поля"
-  toGameText (ParseError _) = "Не получилось прочитать форму запроса. Начата новая игра."
+  toGameText ParseError = "Не получилось прочитать форму запроса. Начата новая игра."
   toGameText TurnsDesync = "Рассинхронизация ходов с сервером. Отправлено актуальное состояние игры."
   toGameText GameNotFound = "Ваша игра не найдена или была удалена. Начата новая игра."
 

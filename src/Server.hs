@@ -34,7 +34,7 @@ type AppM = ReaderT (TVar Sessions) (LoggingT Handler)
 
 -- | API для запросов на новую игру.
 type NewAPI = "new"
-  :> QueryParam "session" UUID
+  :> QueryParam' '[Optional, Lenient] "session" UUID
   :> Get '[HTML] (Html ())
 
 -- | API для запросов на обновление игры.
@@ -67,7 +67,11 @@ server = new :<|> update :<|> static
       Log.logInfoNT "New request"
       startNewGame Nothing
 
-    new (Just session) = do
+    new (Just (Left error)) = do
+      Log.logErrorNT $ "New request parse error: " <> Text.showt error
+      startNewGame $ Just ParseError
+
+    new (Just (Right session)) = do
       Log.logInfoNT $ "New restart request: " <> Text.showt session
       tvar <- ask
       sessions <- liftIO $ readTVarIO tvar
@@ -77,7 +81,7 @@ server = new :<|> update :<|> static
 
     update (Left error) = do
       Log.logErrorNT $ "Update request parse error: " <> Text.showt error
-      startNewGame $ Just $ ParseError error
+      startNewGame $ Just ParseError
 
     update (Right update@Update{..}) = do
       currentTime <- liftIO getCurrentTime
