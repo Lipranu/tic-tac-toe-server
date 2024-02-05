@@ -10,7 +10,7 @@ maintainer:          lipranu@gmail.com
 category:            Web
 extra-source-files:  README.md
 description:         Server side tic-tac-toe game
-tested-with: GHC ==9.6.2 || ==9.4.4 || ==9.2.8 || ==8.10.2 || ==8.8.2
+tested-with: GHC ==9.6.2 || ==9.4.4 || ==9.2.8
 
 common tic-tac-toe-common
   default-language:    Haskell2010
@@ -23,10 +23,10 @@ common tic-tac-toe-common
 
 common lib-test-common
   build-depends:
-    , array >= 0.5.4 && < 0.6
-    , random >= 1.2.1 && < 1.3
-    , time >= 1.12.2 && < 1.13
-    , uuid >= 1.3.15 && < 1.4
+    , array
+    , random
+    , time
+    , uuid
 
 library
   import:
@@ -42,15 +42,15 @@ library
       Control.Monad.Logger.Extended
     , Data.Text.Extended
   build-depends:
-    , http-api-data >= 0.5 && < 0.6
-    , lucid >= 2.11.20230408 && < 2.12
-    , monad-logger >= 0.3.40 && < 0.4
-    , mtl >= 2.2.2 && < 2.3
-    , servant-lucid >= 0.9.0 && < 0.10
-    , servant-server >= 0.19.2 && < 0.20
-    , stm >= 2.5.1 && < 2.6
-    , text >= 2.0.2 && < 2.1
-    , unordered-containers >= 0.2.19 && < 0.3
+    , http-api-data
+    , lucid
+    , monad-logger
+    , mtl
+    , servant-lucid
+    , servant-server
+    , stm
+    , text
+    , unordered-containers
   hs-source-dirs:      src
 
 executable tic-tac-toe-server
@@ -61,10 +61,10 @@ executable tic-tac-toe-server
     -Wall
   build-depends:
     , tic-tac-toe-server
-    , async >= 2.2.5 && < 2.3
-    , stm >= 2.5.1 && < 2.6
-    , unordered-containers >= 0.2.19 && < 0.3
-    , warp >= 3.3.25 && < 3.4
+    , async
+    , stm
+    , unordered-containers
+    , warp
   hs-source-dirs:      app
 
 test-suite tic-tac-toe-server-test
@@ -76,4 +76,4 @@ test-suite tic-tac-toe-server-test
   main-is:             Spec.hs
   build-depends:
     , tic-tac-toe-server
-    , hspec ^>=2.0.0
+    , hspec
