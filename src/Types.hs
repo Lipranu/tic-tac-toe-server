@@ -57,7 +57,7 @@ data Update = Update
   , column  :: !Int  -- ^ Индекс колонки хода игрока.
   , count   :: !Int  -- ^ Счетчик ходов.
   }
-  deriving stock (Generic, Show)
+  deriving stock (Generic, Show, Eq)
   deriving anyclass FromForm
 
 -- | Прогресс игры.
@@ -66,7 +66,7 @@ data GameProgress
   | Dropped              -- ^ Игра сброшена.
   | Draw                 -- ^ Игра завершилась ничьей.
   | Win !([Point], Side) -- ^ Клетки выигравшей комбинации и сторона победителя.
-  deriving stock (Eq, Show)
+  deriving stock (Show, Eq)
 
 -- | Сторона игрока.
 data Side
@@ -87,7 +87,7 @@ data GameState = GameState
   , turnCount    :: !Int          -- ^ Счетчик ходов.
   , turnCurrent  :: !Side         -- ^ Сторона для текущего хода.
   }
-  deriving stock Show
+  deriving stock (Show, Eq)
 
 -- | Ошибка, возникшая во время игры.
 data GameError
@@ -96,7 +96,7 @@ data GameError
   | TurnsDesync        -- ^ Рассинхронизация количества ходов на сервере.
   | OutOfBorder !Point -- ^ Координаты хода за пределами игрового поля.
   | ParseError !String -- ^ Ошибка парсинга хода игрока.
-  deriving stock Show
+  deriving stock (Show, Eq)
 
 instance GameText GameError where
   toGameText :: GameError -> Text

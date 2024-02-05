@@ -19,8 +19,17 @@ common tic-tac-toe-common
     , NamedFieldPuns
     , RecordWildCards
 
+common lib-test-common
+  build-depends:
+    , array
+    , random
+    , time
+    , uuid
+
 library
-  import:              tic-tac-toe-common
+  import:
+      tic-tac-toe-common
+    , lib-test-common
   exposed-modules:
       Game
     , Server
@@ -31,19 +40,15 @@ library
       Control.Monad.Logger.Extended
     , Data.Text.Extended
   build-depends:
-    , array
     , http-api-data
     , lucid
     , monad-logger
     , mtl
-    , random
     , servant-lucid
     , servant-server
     , stm
     , text
-    , time
     , unordered-containers
-    , uuid
   hs-source-dirs:      src
 
 executable tic-tac-toe-server
@@ -62,8 +67,12 @@ executable tic-tac-toe-server
   hs-source-dirs:      app
 
 test-suite tic-tac-toe-server-test
-  import:              tic-tac-toe-common
+  import:
+      tic-tac-toe-common
+    , lib-test-common
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
-  build-depends:       tic-tac-toe-server
+  build-depends:
+    , hspec
+    , tic-tac-toe-server
