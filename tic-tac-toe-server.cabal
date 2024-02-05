@@ -2,7 +2,7 @@ cabal-version:       2.4
 
 name:                tic-tac-toe-server
 version:             0.1.0.0
-synopsis:            Server side tic-tac-toe game
+synopsis:            tic-tac-toe
 license:             MIT
 license-file:        LICENSE
 author:              Igor Belousov
